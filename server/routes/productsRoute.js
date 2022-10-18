@@ -3,7 +3,7 @@ import indexController from "../controllers/indexController";
 
 const router = Router()
 
-router.get("/", indexController.usersController.findAll)
-router.get("/id=:id", indexController.usersController.findOne)
+router.get("/", indexController.productsController.findAll)
+router.get("/:type", indexController.productsController.getFood)
 
 export default router

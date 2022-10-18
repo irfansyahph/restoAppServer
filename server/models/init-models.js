@@ -17,27 +17,20 @@ const sequelize = new Sequelize(
 )
 
 const DataTypes = require("sequelize").DataTypes;
-const _cart = require("./cart");
-const _cart_product = require("./cart_product");
+const _detail_order = require("./detail_order");
 const _products = require("./products");
 const _users = require("./users");
 
 function initModels(sequelize) {
-  const cart = _cart(sequelize, DataTypes);
-  const cart_product = _cart_product(sequelize, DataTypes);
+  const detail_order = _detail_order(sequelize, DataTypes);
   const products = _products(sequelize, DataTypes);
   const users = _users(sequelize, DataTypes);
 
-  cart_product.belongsTo(cart, { as: "cart", foreignKey: "cart_id" });
-  cart.hasMany(cart_product, { as: "cart_products", foreignKey: "cart_id" });
-  cart_product.belongsTo(products, { as: "product", foreignKey: "product_id" });
-  products.hasMany(cart_product, { as: "cart_products", foreignKey: "product_id" });
-  cart.belongsTo(users, { as: "user", foreignKey: "user_id" });
-  users.hasMany(cart, { as: "carts", foreignKey: "user_id" });
+  detail_order.belongsTo(products, { as: "product", foreignKey: "product_id"});
+  products.hasMany(detail_order, { as: "detail_orders", foreignKey: "product_id"});
 
   return {
-    cart,
-    cart_product,
+    detail_order,
     products,
     users,
   };
