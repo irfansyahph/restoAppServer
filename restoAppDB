@@ -1,0 +1,43 @@
+create table users(
+    id serial primary key,
+    table_number integer
+);
+
+create table products(
+    id serial primary key,
+    name varchar(100),
+	type integer,
+	price float,
+	image varchar(256),
+	description varchar(256)
+);
+
+create table detail_order(
+	id serial primary key,
+	table_number integer,
+	product_id integer,
+	qty integer,
+	date timestamp,
+	foreign key(product_id) references products(id) on update cascade on delete cascade
+);
+
+insert into users(table_number) values (1);
+insert into users(table_number) values (2);
+insert into users(table_number) values (3);
+insert into users(table_number) values (4);
+insert into users(table_number) values (5);
+insert into users(table_number) values (6);
+insert into users(table_number) values (7);
+insert into users(table_number) values (8);
+insert into users(table_number) values (9);
+insert into users(table_number) values (10);
+
+insert into products(name,type,price,image,description) values ('Nasi Goreng',0,25000,'https://i.pinimg.com/564x/ea/bf/41/eabf4155f7e63dd0c22a885576bdeeb2.jpg','Nasi goreng WAREG dengan perpaduan potongan ayam dan sayuran segar yang sangat gurih');
+insert into products(name,type,price,image,description) values ('Soto Bandung',0,15000,'https://i.pinimg.com/564x/aa/b3/05/aab3051c18e82dea26cf3aa4ddacbaf1.jpg','Soto WAREG khas bandung dengan perpaduan lengkuas, daging dan kuah hangat yang sangat gurih ');
+insert into products(name,type,price,image,description) values ('Ayam Bakar',0,20000,'https://i.pinimg.com/564x/59/7c/f6/597cf68d5b5d1e3c86907cc21339de16.jpg','Ayam bakar WAREG dengan bumbu kecap yang khas disediakan dengan sambal yang sangat nagih.');
+insert into products(name,type,price,image,description) values ('Ikan Bakar',0,20000,'https://i.pinimg.com/564x/4c/75/22/4c752268c0c84f52daa439b28605937a.jpg','Ikan bakar WAREG dengan bumbu kecap yang khas disediakan dengan sambal yang sangat nagih.');
+insert into products(name,type,price,image,description) values ('Semur Tahu',0,10000,'https://i.pinimg.com/564x/ae/e4/18/aee418216252cdc6acebc43d8da4a581.jpg','Semur tahu WAREG dengan kuah kecap yang khas. ');
+insert into products(name,type,price,image,description) values ('Susu Kurma',0,10000,'https://i.pinimg.com/564x/49/1b/46/491b4638356d79fdd38c14ec82085169.jpg','Susu kurma WAREG dengan perpaduan susu manis dan buah kurma yang sehat dan menyegarkan.');
+insert into products(name,type,price,image,description) values ('Jus Alpukat',0,10000,'https://i.pinimg.com/564x/85/0e/43/850e43371050142948599cc7c591b431.jpg','Jus alpukat WAREG dengan perpaduan susu manis dan buah alpukat yang sehat dan menyegarkan.');
+insert into products(name,type,price,image,description) values ('Es Jeruk Peras',0,10000,'https://i.pinimg.com/564x/59/bb/fd/59bbfd2e5107ecc820fc0a8f39e1620f.jpg','Es jeruk peras WAREG dari perasan murni buah jeruk yang segar dengan tambahan es yang bikin seger.');
+insert into products(name,type,price,image,description) values ('Bandrek',0,10000,'https://i.pinimg.com/564x/72/c5/85/72c585fe31d5b467c67b26b8c0095180.jpg','Bandrek WAREG dengan perpaduan jahe yang diolah dengan air panas yang menghangatkan tubuh.');
